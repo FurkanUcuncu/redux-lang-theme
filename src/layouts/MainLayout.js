@@ -12,7 +12,7 @@ function MainLayout() {
     useEffect(()=>{
         const localTodos = localStorage.getItem("todos")
         const settings = JSON.parse(localStorage.getItem("settings"))
-        if(localTodos.length > 0){
+        if(localTodos && localTodos.length > 0){
             dispatch(todoActions.getTodos(JSON.parse(localTodos)))
         }
         if(settings && settings.language){
