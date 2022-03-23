@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5f7676d-a9d7-445f-bb0b-1d454878d534" name="Changes" comment="Theme colors">
-      <change beforePath="$PROJECT_DIR$/src/components/themeSwitch/ThemeSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/themeSwitch/ThemeSwitch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/MainLayout.js" afterDir="false" />
-    </list>
+    <list default="true" id="b5f7676d-a9d7-445f-bb0b-1d454878d534" name="Changes" comment="Theme colors" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +59,7 @@
       <workItem from="1647970730203" duration="53000" />
       <workItem from="1647970794245" duration="14341000" />
       <workItem from="1648027334312" duration="18710000" />
-      <workItem from="1648051942742" duration="202000" />
+      <workItem from="1648051942742" duration="613000" />
     </task>
     <task id="LOCAL-00001" summary="Redux setup, Theme and Language setup, Todo List(edit, delete, update)">
       <created>1648022896333</created>
