@@ -7,13 +7,16 @@ const settingsSlice = createSlice({
     initialState: {
         theme: Theme["dark"],
         language: Language["en"],
+        settings: JSON.parse(localStorage.getItem("settings"))
     },
     reducers:{
         changeLanguage(state,action){
             state.language = action.payload
+            localStorage.setItem("settings",JSON.stringify({...state.settings,language:action.payload}))
         },
         changeTheme(state,action){
             state.theme = action.payload
+            localStorage.setItem("settings",JSON.stringify({...state.settings,theme:action.payload}))
         }
     }
 })

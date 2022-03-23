@@ -8,8 +8,9 @@ import {Theme} from "../../constants/Theme";
 
 function ThemeSwitch() {
     const dispatch = useDispatch()
-    const [isChecked,setChecked]  = useState(true)
     const {theme} = useSelector(state=>state.settings)
+    const settings = localStorage.getItem("settings")
+    const [isChecked,setChecked]  = useState(JSON.parse(settings).theme.id === 'dark')
     const MaterialUISwitch = styled(Switch)(() => ({
         width: 62,
         height: 34,
@@ -63,6 +64,8 @@ function ThemeSwitch() {
         setChecked(!isChecked)
         dispatch(settingsActions.changeTheme(isChecked ? Theme["light"] : Theme["dark"]))
     }
+
+    console.log(isChecked)
 
     return (
         <MaterialUISwitch onChange={changeTheme} checked={isChecked} sx={{ m: 1 }} />

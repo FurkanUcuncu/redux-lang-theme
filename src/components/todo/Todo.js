@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
-import Button from "@mui/material/Button";
 import {IconButton} from "@mui/material";
 
 function Todo({text,id,isDone}) {
@@ -14,9 +13,9 @@ function Todo({text,id,isDone}) {
 
     const [todo,setTodo] = useState(text)
     const [active,setActive] = useState(true)
-    const [checked,setChecked] = useState(false)
+    const [checked,setChecked] = useState(isDone)
 
-    const {theme,language} = useSelector(state=>state.settings)
+    const {theme} = useSelector(state=>state.settings)
 
     const onChange = (e) =>{
         setTodo(e.target.value)
@@ -27,8 +26,8 @@ function Todo({text,id,isDone}) {
     }
 
     const onCheck = () => {
-        setChecked(!checked)
-        editTodo()
+        setChecked(!isDone)
+        dispatch(todoActions.updateTodo({id,text:todo,isDone:!isDone}))
     }
 
     const onBlur = () =>{
@@ -43,19 +42,21 @@ function Todo({text,id,isDone}) {
     }
 
     const editTodo = (e) => {
-        e.preventDefault()
+        e && e.preventDefault()
         setActive(true)
-        dispatch(todoActions.updateTodo({id,text:todo,isDone:checked}))
+            dispatch(todoActions.updateTodo({id,text:todo,isDone:checked}))
     }
 
     const deleteTodo = () => {
         dispatch(todoActions.deleteTodo(id))
     }
+
+    console.log(JSON.stringify(localStorage.getItem("todos")))
     return (
         <div className={`${theme.todo.bg + " " + theme.todo.shadow} flex items-center justify-between overline mb-3 rounded-md px-5 py-3 rounded-lg`}>
             <form className="w-full" onSubmit={editTodo}>
                 <input
-                    className={`${checked ? 'line-through opacity-30' : ''} ${active ? 'pointer-events-none' : 'pointer-events-auto'} ${theme.todo.text} transition-all focus:outline-none bg-transparent outline-none w-full flex-1`}
+                    className={`${isDone ? 'line-through opacity-30' : ''} ${active ? 'pointer-events-none' : 'pointer-events-auto'} ${theme.todo.text} transition-all focus:outline-none bg-transparent outline-none w-full flex-1`}
                     onFocus={onFocus}
                     ref={ref}
                     disabled={active}
@@ -66,7 +67,7 @@ function Todo({text,id,isDone}) {
                 />
             </form>
             <div className="flex items-center mx-3">
-                <IconButton onClick={onCheck} className={`${checked ? 'text-green-500' : 'text-gray-300'} flex cursor-pointer items-center mx-3 hover:text-green-500`}>
+                <IconButton onClick={onCheck} className={`${isDone ? 'text-green-500' : 'text-gray-300'} flex cursor-pointer items-center mx-3 hover:text-green-500`}>
                     <CheckIcon/>
                 </IconButton>
                 <IconButton onClick={onEdit} className={`flex cursor-pointer items-center mx-3 text-gray-300 hover:text-blue-300`}>

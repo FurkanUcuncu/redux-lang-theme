@@ -1,5 +1,6 @@
 export const Theme = {
     dark : {
+        id: "dark",
         bgDark: "bg-dark",
         textDark: "text-dark",
         textLight: "text-light",
@@ -32,6 +33,7 @@ export const Theme = {
         }
     },
     light:{
+        id:"light",
         bgDark: "bg-white",
         textLight: "text-primary",
         textLightFaded:"text-dark",
