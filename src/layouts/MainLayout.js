@@ -15,10 +15,10 @@ function MainLayout() {
         if(localTodos.length > 0){
             dispatch(todoActions.getTodos(JSON.parse(localTodos)))
         }
-        if(settings.language){
+        if(settings && settings.language){
             dispatch(settingsActions.changeLanguage(settings.language))
         }
-        if(settings.theme){
+        if(settings && settings.theme){
             dispatch(settingsActions.changeTheme(settings.theme))
         }
     },[dispatch])
