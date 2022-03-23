@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
+import Button from "@mui/material/Button";
+import {IconButton} from "@mui/material";
 
 function Todo({text,id,isDone}) {
     const dispatch = useDispatch()
@@ -50,10 +52,10 @@ function Todo({text,id,isDone}) {
         dispatch(todoActions.deleteTodo(id))
     }
     return (
-        <div className="flex justify-between overline mb-3 rounded-md p-5 bg-white drop-shadow-md rounded-lg">
+        <div className={`${theme.todo.bg + " " + theme.todo.shadow} flex items-center justify-between overline mb-3 rounded-md px-5 py-3 rounded-lg`}>
             <form className="w-full" onSubmit={editTodo}>
                 <input
-                    className={`${checked ? 'line-through opacity-30' : ''} ${active ? 'pointer-events-none' : 'pointer-events-auto'} transition-all focus:outline-none bg-white outline-none w-full flex-1`}
+                    className={`${checked ? 'line-through opacity-30' : ''} ${active ? 'pointer-events-none' : 'pointer-events-auto'} ${theme.todo.text} transition-all focus:outline-none bg-transparent outline-none w-full flex-1`}
                     onFocus={onFocus}
                     ref={ref}
                     disabled={active}
@@ -64,15 +66,15 @@ function Todo({text,id,isDone}) {
                 />
             </form>
             <div className="flex items-center mx-3">
-                <div onClick={onCheck} className={`flex cursor-pointer items-center mx-3 text-gray-300 hover:text-green-500`}>
+                <IconButton onClick={onCheck} className={`${checked ? 'text-green-500' : 'text-gray-300'} flex cursor-pointer items-center mx-3 hover:text-green-500`}>
                     <CheckIcon/>
-                </div>
-                <div onClick={onEdit} className={`flex cursor-pointer items-center mx-3 text-gray-300 hover:text-blue-300`}>
+                </IconButton>
+                <IconButton onClick={onEdit} className={`flex cursor-pointer items-center mx-3 text-gray-300 hover:text-blue-300`}>
                     <EditIcon/>
-                </div>
-                <div onClick={deleteTodo} className={`flex cursor-pointer items-center mx-3 text-gray-300 hover:text-red-500`}>
+                </IconButton>
+                <IconButton onClick={deleteTodo} className={`flex cursor-pointer items-center rounded-full mx-3 text-gray-300 hover:text-red-500`}>
                     <DeleteForeverIcon/>
-                </div>
+                </IconButton>
             </div>
         </div>
     );

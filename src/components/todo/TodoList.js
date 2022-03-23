@@ -5,7 +5,7 @@ import Todo from "./Todo";
 
 function TodoList(props) {
     const {todos} = useSelector(state=>state.todos)
-    const {language} = useSelector(state=>state.settings)
+    const {language,theme} = useSelector(state=>state.settings)
 
     // useEffect(()=>{
     //
@@ -13,7 +13,7 @@ function TodoList(props) {
     return (
         <Container extendClass="p-5">
             {
-                todos.length === 0 ? <div className="text-dark">{language.noTodos}</div> :
+                todos.length === 0 ? <div className={theme.body.text + " flex justify-center"}>{language.noTodos}</div> :
                 todos.map((item)=>{
                 return(
                     <Todo

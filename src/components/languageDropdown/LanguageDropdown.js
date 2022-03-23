@@ -39,7 +39,7 @@ function LanguageDropdown(props) {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
-                className={`rounded-md border ${theme.borderLight + " " + theme.textLightFaded}`}
+                className={`${theme.navbar.text}`}
                 endIcon={<KeyboardArrowDownIcon />}
                 sx={{textTransform: 'capitalize'}}
             >

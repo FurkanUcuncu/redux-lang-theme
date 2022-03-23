@@ -7,10 +7,10 @@ import ThemeSwitch from "../themeSwitch/ThemeSwitch";
 function Header() {
     const {language,theme} = useSelector(state=>state.settings)
     return (
-        <div className={`${theme.bgDark}`}>
+        <div className={`${theme.navbar.bg} shadow-md`}>
             <Container>
                 <div className="flex items-center justify-between px-5">
-                    <div className={`${theme.textLightFaded}`}>{language.todoList}</div>
+                    <div className={`${theme.navbar.text}`}>{language.todoList}</div>
                     <div className="flex items-center">
                         <ThemeSwitch/>
                         <LanguageDropdown/>

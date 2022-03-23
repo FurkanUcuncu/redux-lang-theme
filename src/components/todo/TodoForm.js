@@ -28,10 +28,25 @@ function TodoForm(props) {
     }
     return (
         <Container extendClass="p-5 mt-3">
-            <form onSubmit={onSubmit}>
-                <div className="flex items-center rounded-lg overflow-hidden drop-shadow-md w-1/3 relative">
-                    <input className="text-gray-400 outline-none focus:outline-none px-5 py-3 w-full" value={text} onChange={onChange} placeholder={language.addTodo}/>
-                    <Button sx={{position:'absolute',right:0,height:'100%'}} onClick={onSubmit} variant="contained" endIcon={<TelegramIcon/>}>
+            <form className="flex justify-center" onSubmit={onSubmit}>
+                <div className={`flex items-center rounded-lg overflow-hidden drop-shadow-md w-full md:w-1/3 relative`}>
+                    <input className={`text-gray-400 outline-none ${theme.todo.bg} focus:outline-none px-5 py-3 w-full`} value={text} onChange={onChange} placeholder={language.addTodo}/>
+                    <Button
+                        color="info"
+                        sx={{
+                            position:'absolute',
+                            right:0,
+                            height:'100%',
+                            color: theme.todo.formBtnText,
+                            '&:hover': {
+                                backgroundColor: theme.todo.formBtnHoverBg,
+                            },
+                            backgroundColor:theme.todo.formBtnBg,
+
+                    }}
+                        onClick={onSubmit}
+                        variant="contained"
+                        endIcon={<TelegramIcon/>}>
                         {language.add}
                     </Button>
                 </div>
